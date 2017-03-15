@@ -55,11 +55,11 @@ before_install:
 - if [ ${GENERATE_OPENSSL} = true ]; then rm -f openssl-1.0.2k-build.tar.bz2; fi
 
 # poco
-- echo 'Building Poco 1.7.7-all'
-- if [ ${GENERATE_POCO} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/poco-1.7.7-all-build.tar.bz2; else wget http://pocoproject.org/releases/poco-1.7.7/poco-1.7.7-all.tar.gz; fi
-- if [ ${GENERATE_POCO} != true ]; then tar xjf poco-1.7.7-all-build.tar.bz2; else tar xzf poco-1.7.7-all.tar.gz; fi
+- echo 'Building Poco 1.7.8-all'
+- if [ ${GENERATE_POCO} != true ]; then wget -U 'Yadoms/1.0.0' ${YADOMS_DOWNLOAD_URL}/poco-1.7.8-all-build.tar.bz2; else wget http://pocoproject.org/releases/poco-1.7.8/poco-1.7.8-all.tar.gz; fi
+- if [ ${GENERATE_POCO} != true ]; then tar xjf poco-1.7.8-all-build.tar.bz2; else tar xzf poco-1.7.8-all.tar.gz; fi
 - sudo apt-get install libssl-dev libgnutls-dev libopencv-gpu-dev > $HOME/logs/yadoms_poco.log
-- cd poco-1.7.7-all/
+- cd poco-1.7.8-all/
 - if [ ${GENERATE_POCO} != true ]; then echo "Bypass poco/configure_config_file"; else echo 'TOOL               = arm-linux-gnueabihf' > build/config/RaspberryPI; fi
 - if [ ${GENERATE_POCO} != true ]; then echo "Bypass poco/copy_config_file"; else cat build/config/ARM-Linux >> build/config/RaspberryPI; fi
 - if [ ${GENERATE_POCO} != true ]; then echo "Bypass poco/configure_config_file"; else echo 'STATICOPT_CC = -fPIC' >> build/config/RaspberryPI; fi
@@ -67,9 +67,9 @@ before_install:
 - if [ ${GENERATE_POCO} != true ]; then echo "Bypass poco/configure"; else ./configure --static --config=RaspberryPI --no-samples --no-tests --omit=CppUnit,CppUnit/WinTestRunner,Data,Data/SQLite,Data/ODBCData/MySQL,MongoDB,PageCompiler,PageCompiler/File2Page --include-path=$HOME/depsBuild/openssl/include --library-path=$HOME/depsBuild/openssl/lib> $HOME/logs/yadoms_poco.log; fi
 - if [ ${GENERATE_POCO} != true ]; then echo "Bypass poco/make"; else make > $HOME/logs/yadoms_poco.log; fi
 - cd ..
-- if [ ${GENERATE_POCO} = true ]; then tar cjf poco-1.7.7-all-build.tar.bz2 poco-1.7.7-all; fi
-- if [ ${GENERATE_POCO} = true ]; then curl --ftp-create-dirs -T poco-1.7.7-all-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
-- if [ ${GENERATE_POCO} = true ]; then rm -f poco-1.7.7-all-build.tar.bz2; fi
+- if [ ${GENERATE_POCO} = true ]; then tar cjf poco-1.7.8-all-build.tar.bz2 poco-1.7.8-all; fi
+- if [ ${GENERATE_POCO} = true ]; then curl --ftp-create-dirs -T poco-1.7.8-all-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
+- if [ ${GENERATE_POCO} = true ]; then rm -f poco-1.7.8-all-build.tar.bz2; fi
 
 
 # protobuf (host)
@@ -221,7 +221,7 @@ script:
 - echo 'Configuring Yadoms CMakeListsUserConfig.txt'
 #- cp sources/CMakeListsUserConfig.sample.txt yadoms/sources/CMakeListsUserConfig.txt 
 - echo 'set(BOOST_ROOT "'$PWD'/boost_1_63_0")' > yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(POCO_ROOT "'$PWD'/poco-1.7.7-all")' >> yadoms/sources/CMakeListsUserConfig.txt
+- echo 'set(POCO_ROOT "'$PWD'/poco-1.7.8-all")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(COTIRE_USE ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(COTIRE_USE_UNITY ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'set(PROTOBUF_ROOT "'$HOME'/depsBuild/protobuf")' >> yadoms/sources/CMakeListsUserConfig.txt
