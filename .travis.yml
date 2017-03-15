@@ -251,9 +251,9 @@ script:
 # Yadoms
 - cd yadoms
 - echo 'Generating makefile'
-- cd projects
 - sh cmake_linux.sh q
 - echo 'Building Yadoms'
+- cd projects
 - make all_unity
 - cd ..
 
