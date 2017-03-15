@@ -251,7 +251,7 @@ script:
 # Yadoms
 - cd yadoms
 - echo 'Generating makefile'
-- sh cmake_linux.sh q
+- sh cmake_raspberry.sh q
 - echo 'Building Yadoms'
 - cd projects
 - make all_unity
