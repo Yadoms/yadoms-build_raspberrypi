@@ -284,7 +284,7 @@ after_success: # and this only on success
 
 #rename folder and package it
 - mv builds yadoms-raspberrypi-` cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- tar cjf yadoms-raspberrypi-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${BUILD_BRANCH}.tar.bz2 yadoms-raspberrypi-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- curl --ftp-create-dirs -T yadoms-raspberrypi-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${BUILD_BRANCH}.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- tar cjf yadoms-raspberrypi-v`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.b${BUILD_BRANCH}.tar.bz2 yadoms-raspberrypi-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
+- curl --ftp-create-dirs -T yadoms-raspberrypi-v`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.b${BUILD_BRANCH}.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 
