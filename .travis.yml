@@ -215,6 +215,9 @@ before_install:
 - echo 'Downloading yadoms sources'
 - git clone --depth=1 -b ${BUILD_BRANCH} git://github.com/Yadoms/yadoms.git 
 
+#Install rpm tools
+- sudo apt-get install rpm
+
 
 script:
 # Yadoms configuration file
