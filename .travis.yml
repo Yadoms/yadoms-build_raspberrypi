@@ -275,6 +275,7 @@ script:
 - cp ../package.json.in updatepackage/package.json
 - sed -i -- 's/__version__/'`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`'/g' updatepackage/package.json
 - sed -i -- 's/__gitdate__/'`git log -1 --format=%cI `'/g' updatepackage/package.json
+- cp changelog.md updatepackage/changelog.md
 - mv builds/package packagetomove
 - mv builds updatepackage/package
 - rm -f updatepackage/package/yadoms.ini
