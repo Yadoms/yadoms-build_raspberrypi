@@ -34,7 +34,7 @@ before_install:
 - sudo make install
 - cd ..
 - if [ ${GENERATE_CMAKE} = true ]; then tar cjf cmake-3.10.2-build.tar.bz2 cmake-3.10.2; fi
-- if [ ${GENERATE_CMAKE} = true ]; then curl --disable-epsv --ftp-create-dirs -T cmake-3.10.2-build.tar.bz2 -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/yadoms-build-raspberrypi/ ; fi
+- if [ ${GENERATE_CMAKE} = true ]; then curl --disable-epsv --ftp-create-dirs -T cmake-3.10.2-build.tar.bz2 -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/ ; fi
 - if [ ${GENERATE_CMAKE} = true ]; then rm -f cmake-3.10.2-build.tar.bz2; fi
 
 # boost
