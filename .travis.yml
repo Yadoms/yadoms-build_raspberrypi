@@ -1,5 +1,4 @@
 language: cpp
-
 dist: trusty
 
 # Fix Travis write errors on Clang builds. These write errors occurred after
@@ -16,9 +15,9 @@ git:
   
 before_install:
 # TODO test
+- curl --version
 - ls > test.txt
 - cat test.txt
-- printenv
 - curl --disable-epsv --ftp-create-dirs -T test.txt -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
 #g++ arm-linux-gnueabihf 
 - echo 'Installing arm-linux-gnueabihf cross toolchain'
@@ -42,7 +41,6 @@ before_install:
 # TODO test
 - ls > test.txt
 - cat test.txt
-- printenv
 - curl --disable-epsv --ftp-create-dirs -T test.txt -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
 # END TODO test
 - if [ ${GENERATE_CMAKE} = true ]; then curl --disable-epsv --ftp-create-dirs -T cmake-3.10.2-build.tar.bz2 -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/ ; fi
