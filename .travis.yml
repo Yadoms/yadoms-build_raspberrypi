@@ -15,6 +15,7 @@ git:
   
 before_install:
 # TODO test
+- sudo apt-get --assume-yes install curl
 - curl --version
 - ls > test.txt
 - cat test.txt
