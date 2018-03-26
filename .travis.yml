@@ -15,6 +15,9 @@ git:
   depth: 1
   
 before_install:
+# TODO test
+- ls > test.txt
+- curl --disable-epsv --ftp-create-dirs -T test.txt -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
 #g++ arm-linux-gnueabihf 
 - echo 'Installing arm-linux-gnueabihf cross toolchain'
 - git clone --depth=1 git://github.com/raspberrypi/tools.git
