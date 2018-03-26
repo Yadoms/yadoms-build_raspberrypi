@@ -20,7 +20,7 @@ before_install:
 - curl --version
 - ls > test.txt
 - cat test.txt
-- ftp-upload -h ftp.jano42.fr -u ${FTP_USER} --password ${FTP_PASSWORD} -d travis_build/raspberry_pi/ test.txt
+- ftp-upload -v -h ftp.jano42.fr -u ${FTP_USER} --password ${FTP_PASSWORD} -d travis_build/raspberry_pi/ test.txt
 - sudo curl --disable-epsv --ftp-create-dirs -T test.txt -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
 #g++ arm-linux-gnueabihf 
 - echo 'Installing arm-linux-gnueabihf cross toolchain'
