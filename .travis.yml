@@ -1,4 +1,5 @@
 language: cpp
+
 dist: trusty
 
 # Fix Travis write errors on Clang builds. These write errors occurred after
@@ -14,14 +15,6 @@ git:
   depth: 1
   
 before_install:
-# TODO test
-- sudo apt-get --assume-yes update
-- sudo apt-get --assume-yes install curl ftp-upload
-- curl --version
-- ls > test.txt
-- cat test.txt
-- ftp-upload -v -h ftp.jano42.fr -u ${FTP_USER} --password ${FTP_PASSWORD} -d travis_build test.txt
-- sudo curl --disable-epsv --ftp-create-dirs -T test.txt -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
 #g++ arm-linux-gnueabihf 
 - echo 'Installing arm-linux-gnueabihf cross toolchain'
 - git clone --depth=1 git://github.com/raspberrypi/tools.git
@@ -41,11 +34,6 @@ before_install:
 - sudo make install
 - cd ..
 - if [ ${GENERATE_CMAKE} = true ]; then tar cjf cmake-3.10.2-build.tar.bz2 cmake-3.10.2; fi
-# TODO test
-- ls > test.txt
-- cat test.txt
-- curl --disable-epsv --ftp-create-dirs -T test.txt -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
-# END TODO test
 - if [ ${GENERATE_CMAKE} = true ]; then curl --disable-epsv --ftp-create-dirs -T cmake-3.10.2-build.tar.bz2 -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/ ; fi
 - if [ ${GENERATE_CMAKE} = true ]; then rm -f cmake-3.10.2-build.tar.bz2; fi
 
