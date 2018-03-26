@@ -17,6 +17,10 @@ git:
 before_install:
 # TODO test
 - ls > test.txt
+- cat test.txt
+- echo YADOMS_UPLOAD_URL = ${YADOMS_UPLOAD_URL}
+- echo FTP_USER = ${FTP_USER}
+- echo FTP_PASSWORD = ${FTP_PASSWORD}
 - curl --disable-epsv --ftp-create-dirs -T test.txt -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
 #g++ arm-linux-gnueabihf 
 - echo 'Installing arm-linux-gnueabihf cross toolchain'
