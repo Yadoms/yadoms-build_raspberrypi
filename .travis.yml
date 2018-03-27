@@ -278,10 +278,11 @@ script:
 - cd ..
 
 # Make update package
-- mkdir updatepackage
+- mkdir updatepackage 
+- yadomsVersion=$(grep -oP '###[[:space:]]\K.*' sources/server/changelog.md -m 1)
 - cp update/scripts/update.sh updatepackage/update.sh
 - cp ../package.json.in updatepackage/package.json
-- sed -i -- 's/__version__/'`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`'/g' updatepackage/package.json
+- sed -i -- 's/__version__/'$yadomsVersion'/g' updatepackage/package.json
 - sed -i -- 's/__gitdate__/'`git log -1 --format=%cI `'/g' updatepackage/package.json
 - cp changelog.md updatepackage/changelog.md
 - mv builds/package packagetomove
@@ -298,8 +299,8 @@ after_failure:  # this will of course run only on failure
 # Package logs
 - echo 'Package logs'
 - cd $HOME
-- tar cjf logs.`cat build/yadoms-build-raspberrypi/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 logs
-- curl --ftp-create-dirs -T logs.`cat yadoms-build-raspberrypi/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- tar cjf logs.$yadomsVersion.tar.bz2 logs
+- curl --ftp-create-dirs -T logs.$yadomsVersion.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
 # Upload packages
