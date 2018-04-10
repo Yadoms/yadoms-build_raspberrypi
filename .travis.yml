@@ -294,12 +294,12 @@ script:
 - mv packagetomove builds/package
 - mv package.zip builds/package
 
-after_failure:  # this will of course run only on failure
+# after_failure:  # this will of course run only on failure
 # Package logs
-- echo 'Package logs'
-- cd $HOME
-- tar cjf logs.$yadomsVersion.tar.bz2 logs
-- curl --disable-epsv --ftp-create-dirs -T logs.$yadomsVersion.tar.bz2 -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
+# - echo 'Package logs'
+# - cd $HOME
+# - tar cjf logs.$yadomsVersion.tar.bz2 logs
+# - curl --disable-epsv --ftp-create-dirs -T logs.$yadomsVersion.tar.bz2 -u ${FTP_USER}:${FTP_PASSWORD} ${YADOMS_UPLOAD_URL}/
 
 after_success: # and this only on success
 # Upload packages
