@@ -1,4 +1,4 @@
-# Appveyor script to build and deploy Yadoms for Linux
+# Appveyor script to build and deploy Yadoms for Raspberry Pi
 
 # environment:
   # Set here the branch (from original yadoms repository) to build and deploy (a tag name is also supported)
