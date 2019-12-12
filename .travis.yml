@@ -17,4 +17,4 @@ before_install:
   - docker pull ${DOCKER_IMAGE}
   
 script:
-  - docker run -it -e MAKE_PACKAGE=true -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} -e UPLOAD_FTP_CREDENTIALS=${FTP_USER}:${FTP_PASSWORD} yDOCKER_IMAGE /entrypoint.sh
+  - docker run -it -e MAKE_PACKAGE=true -e YADOMS_BUILD_BRANCH=${YADOMS_BRANCH} -e UPLOAD_FTP_CREDENTIALS=${FTP_USER}:${FTP_PASSWORD} ${DOCKER_IMAGE} /entrypoint.sh
